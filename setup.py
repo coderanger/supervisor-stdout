@@ -6,8 +6,8 @@ from setuptools import setup
 
 setup(
     name = 'supervisor-stdout',
-    version = '0.1',
-    py_modules = ['supervisor-stdout'],
+    version = '0.1.1',
+    packages = ['supervisor-stdout'],
 
     author = 'Noah Kantrowitz',
     author_email = 'noah@coderanger.net',

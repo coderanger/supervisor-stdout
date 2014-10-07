@@ -1,5 +1,11 @@
 import sys
 
+COLORS = tuple(range(30, 38))
+
+def get_color(key):
+    use_string = key if isinstance(key, basestring) else str(key)
+    return COLORS[use_string.__hash__() % len(COLORS)]
+
 def write_stdout(s):
     sys.stdout.write(s)
     sys.stdout.flush()
@@ -19,7 +25,11 @@ def main():
 def event_handler(event, response):
     line, data = response.split('\n', 1)
     headers = dict([ x.split(':') for x in line.split() ])
-    print '%s %s | %s'%(headers['processname'], headers['channel'], data),
+    print '\033[1;%sm%s\033[1;m | \033[1;%sm%s\033[1;m | %s' % (get_color(headers['processname']),
+                                                              headers['processname'],
+                                                              get_color(headers['channel']),
+                                                              headers['channel'],
+                                                              data),
 
 if __name__ == '__main__':
     main()

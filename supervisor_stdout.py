@@ -1,3 +1,4 @@
+import os
 import sys
 
 COLORS = tuple(range(30, 38))
@@ -13,6 +14,13 @@ def supports_color():
     Returns True if the running system's terminal supports color, and False
     otherwise.
     """
+
+    if os.getenv("STDOUT_ALWAYS_ENABLE_COLOR_OUTPUT") is True:
+        return True
+
+    if os.getenv("STDOUT_DISABLE_COLOR_OUTPUT") is True:
+        return False
+
     plat = sys.platform
     supported_platform = plat != 'Pocket PC' and (plat != 'win32' or
                                                   'ANSICON' in os.environ)

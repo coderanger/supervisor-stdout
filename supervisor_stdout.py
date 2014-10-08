@@ -15,10 +15,10 @@ def supports_color():
     otherwise.
     """
 
-    if os.getenv("STDOUT_ALWAYS_ENABLE_COLOR_OUTPUT") is True:
+    if os.getenv("STDOUT_ALWAYS_ENABLE_COLOR_OUTPUT"):
         return True
 
-    if os.getenv("STDOUT_DISABLE_COLOR_OUTPUT") is True:
+    if os.getenv("STDOUT_DISABLE_COLOR_OUTPUT"):
         return False
 
     plat = sys.platform

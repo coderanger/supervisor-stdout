@@ -1,3 +1,4 @@
+from __future__ import print_function
 import sys
 
 def write_stdout(s):
@@ -21,7 +22,7 @@ def event_handler(event, response):
     headers = dict([ x.split(':') for x in line.split() ])
     lines = data.split('\n')
     prefix = '%s %s | '%(headers['processname'], headers['channel'])
-    print '\n'.join([ prefix + l for l in lines ])
+    print('\n'.join([ prefix + l for l in lines ]))
 
 if __name__ == '__main__':
     main()

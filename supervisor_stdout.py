@@ -15,7 +15,7 @@ def main():
         line = sys.stdin.readline()  # read header line from stdin
         headers = dict([ x.split(':') for x in line.split() ])
         data = sys.stdin.read(int(headers['len'])) # read the event payload
-        write_stdout('RESULT %s\n%s'%(len(data), data)) # transition from READY to ACKNOWLEDGED
+        write_stdout('RESULT %s\n%s'%(len(data.encode("utf-8")), data)) # transition from READY to ACKNOWLEDGED
 
 def event_handler(event, response):
     line, data = response.split('\n', 1)

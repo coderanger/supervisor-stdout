@@ -18,6 +18,7 @@ def main():
         write_stdout('RESULT %s\n%s'%(len(data.encode("utf-8")), data)) # transition from READY to ACKNOWLEDGED
 
 def event_handler(event, response):
+    response = response.decode()
     line, data = response.split('\n', 1)
     headers = dict([ x.split(':') for x in line.split() ])
     lines = data.split('\n')

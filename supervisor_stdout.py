@@ -21,7 +21,7 @@ def event_handler(event, response):
     response = response.decode()
     line, data = response.split('\n', 1)
     headers = dict([ x.split(':') for x in line.split() ])
-    lines = data.split('\n')
+    lines = [ l for l in data.split('\n') if l not in ['', '\n'] ]
     prefix = '%s %s | '%(headers['processname'], headers['channel'])
     print('\n'.join([ prefix + l for l in lines ]))
 
